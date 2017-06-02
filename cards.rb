@@ -51,8 +51,30 @@ class Shoe < Cards
 end
 
 class Hand < Cards
-  def initialize(*card)
-    @cards = card
+  attr_accessor :bet
+  attr_writer   :stand
+
+  def initialize(*cards)
+    @cards = cards
+    @bet = 0
+    @stand = false
+  end
+
+  def status
+    if @cards.size.zero?
+      :empty
+    elsif value.min > 21
+      :busted
+    elsif (@cards[0].value + @cards[1].value).size == 3 &&
+      value.include?(21)
+        :blackjack
+    elsif value.include? 21
+      :twentyone
+    elsif @stand
+      :stand
+    else
+      :in_play
+    end
   end
 
   def value

@@ -1,2 +1,2 @@
 # four
-TBD
+Blackjack game. Incomplete
