@@ -51,12 +51,10 @@ class Shoe < Cards
 end
 
 class Hand < Cards
-  attr_accessor :bet
   attr_writer   :stand
 
-  def initialize(*cards)
-    @cards = cards
-    @bet = 0
+  def initialize
+    @cards = []
     @stand = false
   end
 
